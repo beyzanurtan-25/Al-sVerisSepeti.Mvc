@@ -1,0 +1,43 @@
+﻿@using AlısVerisSepeti.Mvc.Models
+@{
+    ViewBag.Title = "Musteri Listesi";
+}
+@model IEnumerable<Urun>
+<h2>Ürün Listesi</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Ürün Ad</th>
+            <th>Özellik</th>
+            <th>Fiyat</th>
+
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.UrunAd</td>
+            <td>@item.Ozellik</td>
+            <td>@item.Fiyat</td>
+
+
+
+            <td>
+
+                <a href="/Admin/Urun/UrunGuncelle/@item.UrunId" class="btn btn-sm btn-primary">Guncelle</a>
+                <a href="/Admin/Urun/UrunSil/@item.UrunId" class="btn btn-danger" onclick="return confirm('Bu ürünü silmek istediğinize emin misiniz?')">Sil</a>
+            </td>
+        </tr>
+        }
+
+
+    </tbody>
+
+</table>
+
+

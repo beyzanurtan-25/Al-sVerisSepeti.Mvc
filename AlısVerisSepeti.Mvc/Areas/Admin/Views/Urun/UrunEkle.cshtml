@@ -1,0 +1,49 @@
+﻿@model AlısVerisSepeti.Mvc.Models.Urun
+
+@{
+    ViewBag.Title = "UrunEkle";
+}
+
+<h2>Urun Ekle</h2>
+
+@using (Html.BeginForm("UrunEkle", "Urun", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.UrunAd);
+        @Html.TextBoxFor(m => m.UrunAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UrunAd)
+        <label id="lblAdHata" style="display:none;color:red">Ad alanı boş olamaz</label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ozellik);
+        @Html.TextBoxFor(m => m.Ozellik, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Ozellik)
+        <label id="lblOzellikHata" style="display:none;color:red">Özellik alanı boş olamaz</label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Fiyat);
+        @Html.TextBoxFor(m => m.Fiyat, new { @type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Fiyat)
+        <label id="lblFiyatHata" style="display:none;color:red">Fiyat alanı boş olamaz</label>
+    </div>
+    <input type="submit" name="button" value="Kaydet" class="btn btn-danger" onclick="return BoslukKontrol()"/>
+}
+@section scripts{
+    <script>
+        function BoslukKontrol() {
+           
+            var hatayok = true;
+            if ($("#Fiyat").val() == "" || $("#Ozellik").val() == "" || $("#UrunAd").val() == "")
+            {
+                $("#lblAdHata").show();
+                $("#lblOzellikHata").show();
+                $("#lblFiyatHata").show();
+                hatayok = false;
+            }
+
+            return hatayok;
+        }
+
+    </script>
+
+}

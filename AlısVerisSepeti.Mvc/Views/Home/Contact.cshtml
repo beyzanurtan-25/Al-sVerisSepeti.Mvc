@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contact</h2>
+<input type="email" name="mail" value="" placeholder="Email" />
+@Html.TextArea("Iletisim")
+<script type="text/javascript">
+            var editor = CKEDITOR.instances['Iletisim'];
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('Iletisim', {
+                enterMode: CKEDITOR.ENTER_BR,
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/ckeditor/ckfinder/")');
+</script>
+<input type="submit" name="btn" value="Gönder" />
